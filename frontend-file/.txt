@@ -1,0 +1,70 @@
+import React, { useState } from 'react';
+import useFetch from '../Functions/usefetch';
+import { Link } from 'react-router-dom';
+import '../Components/css/style.css';
+
+export default function Table() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const repo_data = useFetch('repo/showrepo');
+
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+  const filteredData = repo_data.data && repo_data.data.filter(({ lanNo, rcNo, make, model }) =>
+    (lanNo && lanNo.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (rcNo && rcNo.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (make && make.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (model && model.toLowerCase().includes(searchTerm.toLowerCase()))
+);
+
+
+    return (
+        <div>
+            <h2>REPO DATA</h2>
+            <div className="container table-data">
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                    />
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">LAN Number</th>
+                                <th scope="col">RC Number</th>
+                                <th scope="col">Make</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">File</th>
+                                <th scope="col">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredData && filteredData.map(({ _id, lanNo, rcNo, make, model, user_image }) => (
+                                <tr key={_id}>
+                                    <td>{lanNo}</td>
+                                    <td>{rcNo}</td>
+                                    <td>{make}</td>
+                                    <td>{model}</td>
+                                    <td>
+                                        {user_image && (
+                                            <a href={`http://localhost:8080/assets/profiles/${user_image}`} target="_blank" rel="noopener noreferrer">View File</a>
+                                        )}
+                                    </td>
+                                    <td>
+                                        <Link to={`/editForm/${_id}`} className='btn btn-success'>
+                                            <i className="fa-solid fa-pencil"></i>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
+}
+

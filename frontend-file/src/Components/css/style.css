@@ -1,0 +1,92 @@
+
+.header{
+    background: #093028;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #237A57, #093028);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+.title{
+    color: #fff;
+    font-weight: 600;
+}
+
+.sub-tiltle{
+    color: black;
+    font-size: 50px !important;
+    text-decoration: none; 
+}
+a{
+    color: black;
+    font-size: 20px !important;
+}
+
+h2{
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.table-data{
+    border-radius: 15px solid 1px lightgrey;
+    width: 1000px;
+    /* border: 5px solid lightgray; */
+    box-shadow: 1PX 12PX 22PX 10PX lightgray;
+    margin-bottom: 5px;
+}
+
+.edite{
+    text-decoration: none;
+    color: black;
+}
+
+th,tr ,tbody,td{
+    border: 1px solid black;
+}
+
+.registerr{
+    margin-right: 50px !important;
+    margin-left: 60px !important;
+    border: solid 1px lightgray;
+    border-radius: 15px;
+    box-shadow: 4px 5px 7px 10px lightgray;
+    margin-top: 50px;
+}
+
+
+.login{
+    border: solid 1px lightgray;
+    border-radius: 15px;
+    box-shadow: 4px 5px 7px 10px lightgray;
+    margin-top: 50px;  
+}
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group-append {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+@media screen and (max-width:575px) {
+    .table-data{
+        width: 342px;
+        font-size: 10px;
+    }
+
+    .registerr{
+        width: 88%;
+        margin-left: 20px !important;
+    }
+
+    .login{
+        width: 88%;
+        margin-left: 20px !important;
+    }
+}
+
